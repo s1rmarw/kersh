@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ه.ع.ك.ب؟</title>
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('4.jpg'); /* Default background image */
+            background-size: cover;
+            background-position: center;
+            transition: background-image 0.2s ease-in-out;
+        }
+
+        img {
+            width: 300px; /* Set the desired width */
+            height: 300px; /* Maintain the aspect ratio */
+        }
+
+        button {
+            margin: 20px;
+        }
+
+        .red-text {
+            color: red; /* Set the desired color */
+        }
+
+    </style>
+</head>
+<body>
+
+    <img src="0.jpg" alt="هل عبئت الكرش بنجاح؟" id="valentine-image">
+    
+    
+
+    <div style="font-weight: bold; font-size: 40px;" id="dynamic-text">هل عبئت الكرش بنجاح؟</div>
+            
+
+    <div class="button-container">
+        <button style="background-color:lightgreen; font-size: 40px;" onclick="handleYes()">نعم</button>
+        <button style="background-color:red; font-size: 40px;" onclick="handleNo()">لأ</button>
+    </div>
+
+    <script>
+        var noIndex = 0;
+        var noCount = 0; // Initialize noCount
+
+        var noImages = [
+            
+            // Add more image paths as needed
+        ];
+
+        var dynamicText = document.getElementById("dynamic-text");
+        dynamicText.style.color = 'white'; // Set default text color to green
+
+        function handleYes() {
+            // Change the text
+            document.getElementById("dynamic-text").innerText = "😍😍😍 تم تعبئة الكرش بنجاح 😍😍😍";
+            var dynamicText = document.getElementById("dynamic-text");
+            dynamicText.style.color = 'black'; // Set default text color to green
+            dynamicText.style.backgroundColor = 'cyan'; // Set background color to black
+
+            // Remove the buttons
+            var buttonContainer = document.querySelector('.button-container');
+            buttonContainer.style.display = 'none';
+
+            // Change the image
+            var valentineImage = document.getElementById('valentine-image');
+            valentineImage.style.display = 'none';
+
+            // Change the background image
+            document.body.style.backgroundImage = "url('3.png')";
+        }
+
+        function handleNo() {
+            // Show the message for No button
+            var dynamicText = document.getElementById("dynamic-text");
+            dynamicText.innerText = " فشلت تعبئة الكرش  \n  (روح افطر و تعالى)";
+
+            // Change the image after each "No" message
+            var valentineImage = document.getElementById('valentine-image');
+            valentineImage.src = '1.png';
+            valentineImage.alt = 'NO';
+
+            // Increment index, cycle through images
+            noIndex = (noIndex + 1) % noImages.length;
+
+            // Increment noCount
+            noCount++;
+
+            // Replace buttons with "إعادة محاولة تعبئة الكرش" button after the first "No" click
+            if (noCount === 1) {
+                var buttonContainer = document.querySelector('.button-container');
+                buttonContainer.innerHTML = '<button style="background-color:Beige; font-size: 40px;" onclick="handleRedo()">إعادة محاولة تعبأة الكرش</button>';
+            } 
+        }
+
+        // Function to handle redo button
+        function handleRedo() {
+            // Reload the page
+            location.reload();
+        }
+    </script>
+
+</body>
+</html>
