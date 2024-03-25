@@ -48,6 +48,11 @@
         <button style="background-color:red; font-size: 40px;" onclick="handleNo()">لأ</button>
     </div>
 
+    <!-- Audio for Yes -->
+    <audio id="audio-yes" src="yippee.mp3"></audio>
+    <!-- Audio for No -->
+    <audio id="audio-no" src="womp.mp3"></audio>
+
     <script>
         var noIndex = 0;
         var noCount = 0; // Initialize noCount
@@ -61,6 +66,9 @@
         dynamicText.style.color = 'white'; // Set default text color to green
 
         function handleYes() {
+            // Play the audio for Yes
+            document.getElementById('audio-yes').play();
+
             // Change the text
             document.getElementById("dynamic-text").innerText = "😍😍😍 تم تعبئة الكرش بنجاح 😍😍😍";
             var dynamicText = document.getElementById("dynamic-text");
@@ -80,6 +88,9 @@
         }
 
         function handleNo() {
+            // Play the audio for No
+            document.getElementById('audio-no').play();
+
             // Show the message for No button
             var dynamicText = document.getElementById("dynamic-text");
             dynamicText.innerText = " فشلت تعبئة الكرش  \n  (روح افطر و تعالى)";
